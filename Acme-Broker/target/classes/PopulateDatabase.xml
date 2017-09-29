@@ -1,0 +1,715 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!-- * PopulateDatabase.xml * * Copyright (C) 2013 Universidad de Sevilla 
+	* * The use of this project is hereby constrained to the conditions of the 
+	* TDG Licence, a copy of which you may download from * http://www.tdg-seville.info/License.html -->
+
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="
+		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+	">
+
+	<!-- User accounts -->
+
+	<bean id="userAccount1" class="security.UserAccount">
+		<property name="username" value="admin1" />
+		<property name="password" value="e00cf25ad42683b3df678c61f42c6bda" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount2" class="security.UserAccount">
+		<property name="username" value="admin2" />
+		<property name="password" value="c84258e9c39059a89ab77d846ddab909" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="ADMIN" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount3" class="security.UserAccount">
+		<property name="username" value="consumer1" />
+		<property name="password" value="4ee9c60cc32e6615c3c45dc6822c45de" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CONSUMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount4" class="security.UserAccount">
+		<property name="username" value="consumer2" />
+		<property name="password" value="4ca80127919a65aace84bc96346c5bc4" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="CONSUMER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount5" class="security.UserAccount">
+		<property name="username" value="supplier1" />
+		<property name="password" value="bc2f63acd339f45e9575fe30e00950b3" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="SUPPLIER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount6" class="security.UserAccount">
+		<property name="username" value="supplier2" />
+		<property name="password" value="f9e95ee553f7954b8bd113060450720d" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="SUPPLIER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<bean id="userAccount7" class="security.UserAccount">
+		<property name="username" value="supplier3" />
+		<property name="password" value="a9f10294d6a1f965fad9924ae613d999" />
+		<property name="authorities">
+			<list>
+				<bean class="security.Authority">
+					<property name="authority" value="SUPPLIER" />
+				</bean>
+			</list>
+		</property>
+	</bean>
+
+	<!-- Other domain beans come here -->
+
+	<!-- CreditCard -->
+
+	<bean id="creditCard1" class="domain.CreditCard">
+		<property name="holderName" value="customer1" />
+		<property name="brandName" value="Visa" />
+		<property name="expirationMonth" value="2" />
+		<property name="expirationYear" value="2017" />
+		<property name="cVVCode" value="544" />
+		<property name="cardNumber" value="5100230840569769" />
+	</bean>
+
+	<bean id="creditCard2" class="domain.CreditCard">
+		<property name="holderName" value="customer2" />
+		<property name="brandName" value="Visa" />
+		<property name="expirationMonth" value="4" />
+		<property name="expirationYear" value="2018" />
+		<property name="cVVCode" value="777" />
+		<property name="cardNumber" value="4556504922534681" />
+	</bean>
+
+	<bean id="creditCard3" class="domain.CreditCard">
+		<property name="holderName" value="customer3" />
+		<property name="brandName" value="MasterCard" />
+		<property name="expirationMonth" value="4" />
+		<property name="expirationYear" value="2019" />
+		<property name="cVVCode" value="417" />
+		<property name="cardNumber" value="5227958195593590" />
+	</bean>
+
+	<!-- Administrator -->
+
+	<bean id="admin1" class="domain.Admin">
+		<property name="name" value="nameAdmin1" />
+		<property name="surname" value="surnameAdmin1" />
+		<property name="email" value="admin1@us.es" />
+		<property name="userAccount">
+			<ref bean="userAccount1" />
+		</property>
+	</bean>
+
+	<bean id="admin2" class="domain.Admin">
+		<property name="name" value="nameAdmin2" />
+		<property name="surname" value="surnameAdmin2" />
+		<property name="email" value="admin2@us.es" />
+		<property name="userAccount">
+			<ref bean="userAccount2" />
+		</property>
+	</bean>
+
+	<!-- Consumer -->
+
+	<bean id="consumer1" class="domain.Consumer">
+		<property name="name" value="nameConsumer1" />
+		<property name="surname" value="surnameConsumer1" />
+		<property name="email" value="consumer1@us.es" />
+		<property name="userAccount">
+			<ref bean="userAccount3" />
+		</property>
+		<property name="companyName" value="companyNameConsumer1" />
+		<property name="ticker" value="tickerConsumer1" />
+		<property name="creditCard">
+			<ref bean="creditCard1" />
+		</property>
+		<property name="requests">
+			<list>
+				<ref bean="request1" />
+				<ref bean="request2" />
+				<ref bean="request4" />
+				<ref bean="request7" />
+				<ref bean="request8" />
+				<ref bean="request9" />
+				<ref bean="request10" />
+			</list>
+		</property>
+		<property name="contracts">
+			<list>
+				<ref bean="contract1" />
+				<ref bean="contract2" />
+				<ref bean="contract4" />
+				<ref bean="contract7" />
+				<ref bean="contract8" />
+				<ref bean="contract9" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="consumer2" class="domain.Consumer">
+		<property name="name" value="nameConsumer2" />
+		<property name="surname" value="surnameConsumer2" />
+		<property name="email" value="consumer2@us.es" />
+		<property name="userAccount">
+			<ref bean="userAccount4" />
+		</property>
+		<property name="companyName" value="companyNameConsumer2" />
+		<property name="ticker" value="tickerConsumer2" />
+		<property name="creditCard">
+			<ref bean="creditCard1" />
+		</property>
+		<property name="requests">
+			<list>
+				<ref bean="request3" />
+				<ref bean="request5" />
+				<ref bean="request6" />
+			</list>
+		</property>
+		<property name="contracts">
+			<list>
+				<ref bean="contract3" />
+				<ref bean="contract5" />
+				<ref bean="contract6" />
+			</list>
+		</property>
+	</bean>
+
+	<!-- Supplier -->
+
+	<bean id="supplier1" class="domain.Supplier">
+		<property name="name" value="nameSupplier1" />
+		<property name="surname" value="surnameSupplier1" />
+		<property name="email" value="supplier1@us.es" />
+		<property name="userAccount">
+			<ref bean="userAccount5" />
+		</property>
+		<property name="companyName" value="companyNameSupplier1" />
+		<property name="ticker" value="tickerSupplier1" />
+		<property name="creditCard">
+			<ref bean="creditCard1" />
+		</property>
+		<property name="items">
+			<list>
+				<ref bean="item1" />
+				<ref bean="item2" />
+				<ref bean="item5" />
+				<ref bean="item8" />
+				<ref bean="item9" />
+				<ref bean="item10" />
+			</list>
+		</property>
+		<property name="contracts">
+			<list>
+				<ref bean="contract1" />
+				<ref bean="contract4" />
+				<ref bean="contract5" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="supplier2" class="domain.Supplier">
+		<property name="name" value="nameSupplier2" />
+		<property name="surname" value="surnameSupplier2" />
+		<property name="email" value="supplier2@us.es" />
+		<property name="userAccount">
+			<ref bean="userAccount6" />
+		</property>
+		<property name="companyName" value="companyNameSupplier2" />
+		<property name="ticker" value="tickerSupplier2" />
+		<property name="creditCard">
+			<ref bean="creditCard3" />
+		</property>
+		<property name="items">
+			<list>
+				<ref bean="item3" />
+				<ref bean="item4" />
+				<ref bean="item7" />
+			</list>
+		</property>
+		<property name="contracts">
+			<list>
+				<ref bean="contract2" />
+				<ref bean="contract3" />
+			</list>
+		</property>
+	</bean>
+
+	<bean id="supplier3" class="domain.Supplier">
+		<property name="name" value="nameSupplier3" />
+		<property name="surname" value="surnameSupplier3" />
+		<property name="email" value="supplier3@us.es" />
+		<property name="userAccount">
+			<ref bean="userAccount7" />
+		</property>
+		<property name="companyName" value="companyNameSupplier3" />
+		<property name="ticker" value="tickerSupplier3" />
+		<property name="creditCard">
+			<ref bean="creditCard3" />
+		</property>
+		<property name="items">
+			<list>
+				<ref bean="item6" />
+			</list>
+		</property>
+		<property name="contracts">
+			<list>
+				<ref bean="contract7" />
+				<ref bean="contract8" />
+				<ref bean="contract9" />
+			</list>
+		</property>
+	</bean>
+
+
+	<!-- Contract -->
+
+	<bean id="contract1" class="domain.Contract">
+		<property name="code" value="codeContract1" />
+		<property name="creationMoment" value="01/01/2013" />
+		<property name="description" value="descriptionContract1" />
+		<property name="startingDate" value="02/01/2013" />
+		<property name="endingDate" value="03/01/2013" />
+		<property name="contractor">
+			<ref bean="supplier1" />
+		</property>
+		<property name="contractHolder">
+			<ref bean="consumer1" />
+		</property>
+		<property name="request">
+			<ref bean="request1" />
+		</property>
+	</bean>
+
+	<bean id="contract2" class="domain.Contract">
+		<property name="code" value="codeContract2" />
+		<property name="creationMoment" value="03/03/2013" />
+		<property name="description" value="descriptionContract2" />
+		<property name="startingDate" value="04/01/2013" />
+		<property name="endingDate" value="05/01/2013" />
+		<property name="contractHolderDateSign" value="03/04/2013" />
+		<property name="contractorDateSign" value="03/05/2013" />
+		<property name="contractor">
+			<ref bean="supplier2" />
+		</property>
+		<property name="contractHolder">
+			<ref bean="consumer1" />
+		</property>
+		<property name="request">
+			<ref bean="request2" />
+		</property>
+	</bean>
+
+	<bean id="contract3" class="domain.Contract">
+		<property name="code" value="codeContract3" />
+		<property name="creationMoment" value="04/04/2013" />
+		<property name="description" value="descriptionContract3" />
+		<property name="startingDate" value="05/01/2013" />
+		<property name="endingDate" value="06/01/2013" />
+		<property name="contractHolderDateSign" value="04/05/2013" />
+		<property name="contractorDateSign" value="04/06/2013" />
+		<property name="contractor">
+			<ref bean="supplier2" />
+		</property>
+		<property name="contractHolder">
+			<ref bean="consumer2" />
+		</property>
+		<property name="request">
+			<ref bean="request3" />
+		</property>
+	</bean>
+
+	<bean id="contract4" class="domain.Contract">
+		<property name="code" value="codeContract4" />
+		<property name="creationMoment" value="02/11/2014" />
+		<property name="description" value="descriptionContract4" />
+		<property name="startingDate" value="04/05/2014" />
+		<property name="endingDate" value="07/05/2014" />
+		<property name="contractHolderDateSign" value="02/12/2014" />
+		<property name="contractorDateSign" value="02/13/2014" />
+		<property name="contractor">
+			<ref bean="supplier1" />
+		</property>
+		<property name="contractHolder">
+			<ref bean="consumer1" />
+		</property>
+		<property name="request">
+			<ref bean="request4" />
+		</property>
+	</bean>
+
+	<bean id="contract5" class="domain.Contract">
+		<property name="code" value="codeContract5" />
+		<property name="creationMoment" value="03/11/2014" />
+		<property name="description" value="descriptionContract5" />
+		<property name="startingDate" value="04/06/2014" />
+		<property name="endingDate" value="07/06/2014" />
+		<property name="contractHolderDateSign" value="03/13/2014" />
+		<property name="contractorDateSign" value="03/15/2014" />
+		<property name="contractor">
+			<ref bean="supplier1" />
+		</property>
+		<property name="contractHolder">
+			<ref bean="consumer2" />
+		</property>
+		<property name="request">
+			<ref bean="request5" />
+		</property>
+	</bean>
+
+	<bean id="contract6" class="domain.Contract">
+		<property name="code" value="codeContract6" />
+		<property name="creationMoment" value="03/20/2014" />
+		<property name="description" value="descriptionContract6" />
+		<property name="startingDate" value="04/07/2014" />
+		<property name="endingDate" value="07/07/2014" />
+		<property name="contractHolderDateSign" value="03/24/2014" />
+		<property name="contractorDateSign" value="03/23/2014" />
+		<property name="contractor">
+			<ref bean="supplier2" />
+		</property>
+		<property name="contractHolder">
+			<ref bean="consumer2" />
+		</property>
+		<property name="request">
+			<ref bean="request6" />
+		</property>
+	</bean>
+	
+	<bean id="contract7" class="domain.Contract">
+		<property name="code" value="codeContract7" />
+		<property name="creationMoment" value="03/20/2014" />
+		<property name="description" value="descriptionContract7" />
+		<property name="startingDate" value="10/10/2014" />
+		<property name="endingDate" value="10/10/2015" />
+		<property name="contractHolderDateSign" value="09/09/2014" />
+		<property name="contractorDateSign" value="09/09/2014" />
+		<property name="contractor">
+			<ref bean="supplier3" />
+		</property>
+		<property name="contractHolder">
+			<ref bean="consumer1" />
+		</property>
+		<property name="request">
+			<ref bean="request8" />
+		</property>
+	</bean>
+	
+	<bean id="contract8" class="domain.Contract">
+		<property name="code" value="codeContract8" />
+		<property name="creationMoment" value="03/20/2014" />
+		<property name="description" value="descriptionContract8" />
+		<property name="startingDate" value="11/11/2013" />
+		<property name="endingDate" value="11/11/2014" />
+		<property name="contractHolderDateSign" value="10/10/2013" />
+		<property name="contractorDateSign" value="10/10/2013" />
+		<property name="contractor">
+			<ref bean="supplier3" />
+		</property>
+		<property name="contractHolder">
+			<ref bean="consumer1" />
+		</property>
+		<property name="request">
+			<ref bean="request9" />
+		</property>
+	</bean>
+	
+	<bean id="contract9" class="domain.Contract">
+		<property name="code" value="codeContract9" />
+		<property name="creationMoment" value="03/20/2014" />
+		<property name="description" value="descriptionContract9" />
+		<property name="startingDate" value="11/11/2014" />
+		<property name="endingDate" value="12/12/2014" />
+		<property name="contractHolderDateSign" value="10/10/2014" />
+		<property name="contractorDateSign" value="10/10/2014" />
+		<property name="contractor">
+			<ref bean="supplier3" />
+		</property>
+		<property name="contractHolder">
+			<ref bean="consumer1" />
+		</property>
+		<property name="request">
+			<ref bean="request10" />
+		</property>
+	</bean>
+
+	<!-- Request -->
+
+	<bean id="request1" class="domain.Request">
+		<property name="code" value="codeRequest1" />
+		<property name="description" value="descriptionRequest1" />
+		<property name="startingDate" value="02/01/2013" />
+		<property name="endingDate" value="03/01/2013" />
+		<property name="isCancelled" value="false" />
+		<property name="consumer">
+			<ref bean="consumer1" />
+		</property>
+		<property name="contract">
+			<ref bean="contract1" />
+		</property>
+	</bean>
+
+	<bean id="request2" class="domain.Request">
+		<property name="code" value="codeRequest2" />
+		<property name="description" value="descriptionRequest2" />
+		<property name="startingDate" value="04/01/2013" />
+		<property name="endingDate" value="05/01/2013" />
+		<property name="isCancelled" value="false" />
+		<property name="consumer">
+			<ref bean="consumer1" />
+		</property>
+		<property name="contract">
+			<ref bean="contract2" />
+		</property>
+	</bean>
+
+	<bean id="request3" class="domain.Request">
+		<property name="code" value="codeRequest3" />
+		<property name="description" value="descriptionRequest3" />
+		<property name="startingDate" value="05/01/2013" />
+		<property name="endingDate" value="06/01/2013" />
+		<property name="isCancelled" value="false" />
+		<property name="consumer">
+			<ref bean="consumer2" />
+		</property>
+		<property name="contract">
+			<ref bean="contract3" />
+		</property>
+	</bean>
+
+	<bean id="request4" class="domain.Request">
+		<property name="code" value="codeRequest4" />
+		<property name="description" value="descriptionRequest4" />
+		<property name="startingDate" value="04/05/2014" />
+		<property name="endingDate" value="07/05/2014" />
+		<property name="isCancelled" value="false" />
+		<property name="consumer">
+			<ref bean="consumer1" />
+		</property>
+		<property name="contract">
+			<ref bean="contract4" />
+		</property>
+	</bean>
+
+	<bean id="request5" class="domain.Request">
+		<property name="code" value="codeRequest5" />
+		<property name="description" value="descriptionRequest5" />
+		<property name="startingDate" value="04/06/2014" />
+		<property name="endingDate" value="07/06/2014" />
+		<property name="isCancelled" value="false" />
+		<property name="consumer">
+			<ref bean="consumer2" />
+		</property>
+		<property name="contract">
+			<ref bean="contract5" />
+		</property>
+	</bean>
+
+	<bean id="request6" class="domain.Request">
+		<property name="code" value="codeRequest6" />
+		<property name="description" value="descriptionRequest6" />
+		<property name="startingDate" value="04/07/2014" />
+		<property name="endingDate" value="07/07/2014" />
+		<property name="isCancelled" value="true" />
+		<property name="consumer">
+			<ref bean="consumer2" />
+		</property>
+		<property name="contract">
+			<ref bean="contract6" />
+		</property>
+	</bean>
+	
+	<bean id="request7" class="domain.Request">
+		<property name="code" value="codeRequest7" />
+		<property name="description" value="descriptionRequest7" />
+		<property name="startingDate" value="04/07/2014" />
+		<property name="endingDate" value="07/07/2014" />
+		<property name="isCancelled" value="false" />
+		<property name="consumer">
+			<ref bean="consumer1" />
+		</property>
+	</bean>
+	
+	<bean id="request8" class="domain.Request">
+		<property name="code" value="codeRequest8" />
+		<property name="description" value="descriptionRequest8" />
+		<property name="startingDate" value="10/10/2014" />
+		<property name="endingDate" value="10/10/2015" />
+		<property name="isCancelled" value="false" />
+		<property name="consumer">
+			<ref bean="consumer1" />
+		</property>
+		<property name="contract">
+			<ref bean="contract7" />
+		</property>
+	</bean>
+	
+	<bean id="request9" class="domain.Request">
+		<property name="code" value="codeRequest9" />
+		<property name="description" value="descriptionRequest9" />
+		<property name="startingDate" value="11/11/2013" />
+		<property name="endingDate" value="11/11/2014" />
+		<property name="isCancelled" value="false" />
+		<property name="consumer">
+			<ref bean="consumer1" />
+		</property>
+		<property name="contract">
+			<ref bean="contract8" />
+		</property>
+	</bean>
+	
+	<bean id="request10" class="domain.Request">
+		<property name="code" value="codeRequest10" />
+		<property name="description" value="descriptionRequest10" />
+		<property name="startingDate" value="10/10/2014" />
+		<property name="endingDate" value="12/12/2014" />
+		<property name="isCancelled" value="false" />
+		<property name="consumer">
+			<ref bean="consumer1" />
+		</property>
+		<property name="contract">
+			<ref bean="contract9" />
+		</property>
+	</bean>
+
+
+	<!-- Item -->
+
+	<bean id="item1" class="domain.Item">
+		<property name="code" value="codeItem1" />
+		<property name="name" value="nameItem1" />
+		<property name="description" value="descriptionItem1" />
+		<property name="price" value="5.00" />
+		<property name="supplier">
+			<ref bean="supplier1" />
+		</property>
+	</bean>
+
+	<bean id="item2" class="domain.Item">
+		<property name="code" value="codeItem2" />
+		<property name="name" value="nameItem2" />
+		<property name="description" value="descriptionItem2" />
+		<property name="price" value="6.00" />
+		<property name="supplier">
+			<ref bean="supplier1" />
+		</property>
+	</bean>
+
+	<bean id="item3" class="domain.Item">
+		<property name="code" value="codeItem3" />
+		<property name="name" value="nameItem3" />
+		<property name="description" value="descriptionItem3" />
+		<property name="price" value="7.00" />
+		<property name="supplier">
+			<ref bean="supplier2" />
+		</property>
+	</bean>
+
+	<bean id="item4" class="domain.Item">
+		<property name="code" value="codeItem4" />
+		<property name="name" value="nameItem4" />
+		<property name="description" value="descriptionItem4" />
+		<property name="price" value="8.00" />
+		<property name="supplier">
+			<ref bean="supplier2" />
+		</property>
+	</bean>
+
+	<bean id="item5" class="domain.Item">
+		<property name="code" value="codeItem5" />
+		<property name="name" value="nameItem5" />
+		<property name="description" value="descriptionItem5" />
+		<property name="price" value="5.00" />
+		<property name="supplier">
+			<ref bean="supplier1" />
+		</property>
+	</bean>
+
+	<bean id="item6" class="domain.Item">
+		<property name="code" value="codeItem6" />
+		<property name="name" value="nameItem6" />
+		<property name="description" value="descriptionItem6" />
+		<property name="price" value="5.00" />
+		<property name="supplier">
+			<ref bean="supplier3" />
+		</property>
+	</bean>
+
+	<bean id="item7" class="domain.Item">
+		<property name="code" value="codeItem7" />
+		<property name="name" value="nameItem7" />
+		<property name="description" value="descriptionItem7" />
+		<property name="price" value="5.00" />
+		<property name="supplier">
+			<ref bean="supplier2" />
+		</property>
+	</bean>
+	
+	<bean id="item8" class="domain.Item">
+		<property name="code" value="codeItem8" />
+		<property name="name" value="nameItem8" />
+		<property name="description" value="descriptionItem8" />
+		<property name="price" value="8.00" />
+		<property name="supplier">
+			<ref bean="supplier1" />
+		</property>
+	</bean>
+	
+	<bean id="item9" class="domain.Item">
+		<property name="code" value="codeItem9" />
+		<property name="name" value="nameItem9" />
+		<property name="description" value="descriptionItem9" />
+		<property name="price" value="9.00" />
+		<property name="supplier">
+			<ref bean="supplier1" />
+		</property>
+	</bean>
+	
+	<bean id="item10" class="domain.Item">
+		<property name="code" value="codeItem10" />
+		<property name="name" value="nameItem10" />
+		<property name="description" value="descriptionItem10" />
+		<property name="price" value="10.00" />
+		<property name="supplier">
+			<ref bean="supplier1" />
+		</property>
+	</bean>
+
+</beans>
